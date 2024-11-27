@@ -3,12 +3,31 @@ import seaborn as sns
 from ml_classifier import TraditionalMLClassifier
 from dl_classifier import DeepLearningClassifier
 import numpy as np
-from main import load_imdb_data
+from tensorflow.keras.datasets import imdb
 import time
 import pandas as pd
 import os
 import json
 import argparse
+
+
+def load_imdb_data():
+    # Load IMDB dataset
+    max_features = 10000  # Maximum number of words to consider
+    (x_train, y_train), (x_test, y_test) = imdb.load_data(num_words=max_features)
+    
+    # Convert indices back to words
+    word_index = imdb.get_word_index()
+    reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])
+    
+    # Decode reviews
+    def decode_review(text):
+        return ' '.join([reverse_word_index.get(i - 3, '?') for i in text])
+    
+    x_train_text = [decode_review(x) for x in x_train]
+    x_test_text = [decode_review(x) for x in x_test]
+    
+    return x_train_text, x_test_text, y_train, y_test, x_train, x_test
 
 def setup_directories():
     # Create necessary directories
@@ -20,7 +39,7 @@ def save_results_to_log(results_dict, filename):
     with open(os.path.join('logs', filename), 'w') as f:
         json.dump(results_dict, f, indent=4)
 
-def experiment_ml_parameters():
+def experiment_ml_parameters(train_size=5000, test_size=1000):
     # Load data
     x_train_text, x_test_text, y_train, y_test, _, _ = load_imdb_data()
     
@@ -44,7 +63,9 @@ def experiment_ml_parameters():
             )
             accuracy, train_time = classifier.train_and_evaluate(
                 x_train_text, x_test_text, y_train, y_test,
-                log_file=log_file
+                log_file=log_file,
+                train_size=train_size,
+                test_size=test_size
             )
             
             # Store results
@@ -63,13 +84,14 @@ def experiment_ml_parameters():
     save_results_to_log({'ml_results': results}, 'ml_results.json')
     return results
 
-def experiment_dl_parameters():
+def experiment_dl_parameters(train_size=5000, test_size=1000):
     # Load data
     _, _, y_train, y_test, x_train, x_test = load_imdb_data()
     
     # Parameters to test
     batch_sizes = [16, 32, 64]
     max_lengths = [64, 128, 256]
+    learning_rates = [1e-5, 2e-5, 3e-5]  # Add different learning rates
     results = []
     
     # Setup logging
@@ -77,31 +99,36 @@ def experiment_dl_parameters():
     
     for batch_size in batch_sizes:
         for max_length in max_lengths:
-            log_message = f"\nTesting DL with batch_size={batch_size}, max_length={max_length}"
-            print(log_message)
-            log_file.write(log_message + '\n')
-            
-            classifier = DeepLearningClassifier(
-                max_length=max_length,
-                batch_size=batch_size
-            )
-            accuracy, train_time, report, recall_neg, recall_pos, f1_neg, f1_pos = classifier.train_and_evaluate(
-                x_train, x_test, y_train, y_test,
-                log_file=log_file
-            )
-            
-            results.append({
-                'batch_size': batch_size,
-                'max_length': max_length,
-                'accuracy': accuracy,
-                'time': train_time,
-                'classification_report': report,
-                'model_name': 'RoBERTa',
-                'recall_neg': recall_neg,
-                'recall_pos': recall_pos,
-                'f1_neg': f1_neg,
-                'f1_pos': f1_pos
-            })
+            for lr in learning_rates:
+                log_message = f"\nTesting DL with batch_size={batch_size}, max_length={max_length}, learning_rate={lr}"
+                print(log_message)
+                log_file.write(log_message + '\n')
+                
+                classifier = DeepLearningClassifier(
+                    max_length=max_length,
+                    batch_size=batch_size,
+                    learning_rates=[lr]  # Pass the current learning rate
+                )
+                accuracy, train_time, report, recall_neg, recall_pos, f1_neg, f1_pos = classifier.train_and_evaluate(
+                    x_train, x_test, y_train, y_test,
+                    log_file=log_file,
+                    train_size=train_size,
+                    test_size=test_size
+                )
+                
+                results.append({
+                    'batch_size': batch_size,
+                    'max_length': max_length,
+                    'learning_rate': lr,
+                    'accuracy': accuracy,
+                    'time': train_time,
+                    'classification_report': report,
+                    'model_name': 'RoBERTa',
+                    'recall_neg': recall_neg,
+                    'recall_pos': recall_pos,
+                    'f1_neg': f1_neg,
+                    'f1_pos': f1_pos
+                })
     
     log_file.close()
     save_results_to_log({'dl_results': results}, 'dl_results.json')
@@ -171,6 +198,23 @@ def save_plots(ml_results, dl_results):
     plt.grid(True)
     plt.tight_layout()
     plt.savefig('plots/ml_time_vs_accuracy.png')
+    plt.close()
+    
+    # 6. DL Learning Rate Impact
+    plt.figure(figsize=(12, 6))
+    for batch_size in dl_df['batch_size'].unique():
+        for max_length in dl_df['max_length'].unique():
+            subset = dl_df[(dl_df['batch_size'] == batch_size) & (dl_df['max_length'] == max_length)]
+            plt.plot(subset['learning_rate'], subset['accuracy'], marker='o', label=f'Batch {batch_size}, Length {max_length}')
+    
+    plt.title('Impact of Learning Rate on DL Model Accuracy')
+    plt.xlabel('Learning Rate')
+    plt.ylabel('Accuracy')
+    plt.xscale('log')  # Log scale for learning rates
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig('plots/dl_learning_rate_impact.png')
     plt.close()
     
     # Save results summary
@@ -440,7 +484,21 @@ def create_metric_comparison_plots(ml_results, dl_results):
     plt.savefig('plots/metrics/f1_comparison.png')
     plt.close()
     
-    # 4. Metrics Summary Table
+    # 4. Recall Index Plot
+    plt.figure(figsize=(12, 6))
+    recall_index = [(pos - neg) for pos, neg in zip(metrics_data['recalls_pos'], metrics_data['recalls_neg'])]
+    plt.bar(x, recall_index, color='purple')
+    
+    plt.xlabel('Models')
+    plt.ylabel('Recall Index (Positive - Negative)')
+    plt.title('Recall Index Across Models')
+    plt.xticks(x, metrics_data['model_names'], rotation=45)
+    plt.grid(True, axis='y')
+    plt.tight_layout()
+    plt.savefig('plots/metrics/recall_index.png')
+    plt.close()
+    
+    # 5. Metrics Summary Table
     metrics_summary = pd.DataFrame({
         'Model': metrics_data['model_names'],
         'Accuracy': metrics_data['accuracies'],
@@ -472,7 +530,11 @@ def create_metric_comparison_plots(ml_results, dl_results):
 def main():
     parser = argparse.ArgumentParser(description='IMDB Classification Analysis')
     parser.add_argument('--show-only', action='store_true', 
-                      help='Only show results without training')
+                        help='Only show results without training')
+    parser.add_argument('--train-size', type=int, default=5000, 
+                        help='Size of the training dataset')
+    parser.add_argument('--test-size', type=int, default=1000, 
+                        help='Size of the testing dataset')
     args = parser.parse_args()
     
     setup_directories()
@@ -481,10 +543,10 @@ def main():
         load_and_show_results()
     else:
         print("Running ML experiments...")
-        ml_results = experiment_ml_parameters()
+        ml_results = experiment_ml_parameters(train_size=args.train_size, test_size=args.test_size)
         
         print("\nRunning DL experiments...")
-        dl_results = experiment_dl_parameters()
+        dl_results = experiment_dl_parameters(train_size=args.train_size, test_size=args.test_size)
         
         print("\nGenerating and saving plots...")
         save_plots(ml_results, dl_results)
