@@ -1,0 +1,24 @@
+Detailed Metrics Summary
+==================================================
+
+                 Model  Accuracy  Negative Recall  Positive Recall  Negative F1  Positive F1  Avg Recall   Avg F1
+0        Random Forest     0.802         0.740000         0.870000     0.800000     0.810000    0.805000  0.80500
+1  Logistic Regression     0.836         0.830000         0.840000     0.840000     0.830000    0.835000  0.83500
+2           Linear SVM     0.830         0.820000         0.840000     0.840000     0.820000    0.830000  0.83000
+3          Naive Bayes     0.821         0.800000         0.850000     0.820000     0.820000    0.825000  0.82000
+4              RoBERTa     0.922         0.891635         0.955696     0.923228     0.920732    0.923666  0.92198
+
+Best Models by Metric:
+------------------------------
+
+Best Accuracy:
+Model: RoBERTa
+Value: 0.9220
+
+Best Avg Recall:
+Model: RoBERTa
+Value: 0.9237
+
+Best Avg F1:
+Model: RoBERTa
+Value: 0.9220

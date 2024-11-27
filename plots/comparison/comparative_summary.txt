@@ -1,0 +1,38 @@
+Comparative Analysis Summary
+==================================================
+
+Machine Learning Models:
+------------------------------
+Random Forest:
+  Best Accuracy: 0.8160
+  Average Accuracy: 0.8033
+  Average Training Time: 0.97s
+
+Logistic Regression:
+  Best Accuracy: 0.8610
+  Average Accuracy: 0.8529
+  Average Training Time: 0.06s
+
+Linear SVM:
+  Best Accuracy: 0.8550
+  Average Accuracy: 0.8468
+  Average Training Time: 0.12s
+
+Naive Bayes:
+  Best Accuracy: 0.8480
+  Average Accuracy: 0.8380
+  Average Training Time: 0.01s
+
+
+Deep Learning Model (RoBERTa):
+------------------------------
+Best Accuracy: 0.9220
+Average Accuracy: 0.8886
+Average Training Time: 37.31s
+
+
+Overall Comparison:
+------------------------------
+Best ML Accuracy: 0.8610
+Best DL Accuracy: 0.9220
+Accuracy Difference: 0.0610
