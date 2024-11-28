@@ -9,7 +9,10 @@ import pandas as pd
 import os
 import json
 import argparse
+import datetime
 
+# Get today's date in YYYYMMDD format
+today_date = datetime.datetime.now().strftime("%Y%m%d")
 
 def load_imdb_data():
     # Load IMDB dataset
@@ -30,13 +33,18 @@ def load_imdb_data():
     return x_train_text, x_test_text, y_train, y_test, x_train, x_test
 
 def setup_directories():
+    # Get today's date in YYYYMMDD format
+    today_date = datetime.datetime.now().strftime("%Y%m%d")
+    
     # Create necessary directories
-    directories = ['plots', 'checkpoints', 'logs']
+    directories = [f'plots/{today_date}', 'checkpoints', 'logs']
     for directory in directories:
         os.makedirs(directory, exist_ok=True)
 
 def save_results_to_log(results_dict, filename):
-    with open(os.path.join('logs', filename), 'w') as f:
+    # Include the date in the log filename
+    dated_filename = f"{today_date}_{filename}"
+    with open(os.path.join('logs', dated_filename), 'w') as f:
         json.dump(results_dict, f, indent=4)
 
 def experiment_ml_parameters(train_size=5000, test_size=1000):
@@ -84,7 +92,7 @@ def experiment_ml_parameters(train_size=5000, test_size=1000):
     save_results_to_log({'ml_results': results}, 'ml_results.json')
     return results
 
-def experiment_dl_parameters(train_size=5000, test_size=1000):
+def experiment_dl_parameters(train_size=5000, test_size=1000, save_checkpoints=False):
     # Load data
     _, _, y_train, y_test, x_train, x_test = load_imdb_data()
     
@@ -113,7 +121,8 @@ def experiment_dl_parameters(train_size=5000, test_size=1000):
                     x_train, x_test, y_train, y_test,
                     log_file=log_file,
                     train_size=train_size,
-                    test_size=test_size
+                    test_size=test_size,
+                    save_checkpoints=save_checkpoints
                 )
                 
                 results.append({
@@ -134,9 +143,12 @@ def experiment_dl_parameters(train_size=5000, test_size=1000):
     save_results_to_log({'dl_results': results}, 'dl_results.json')
     return results
 
-def save_plots(ml_results, dl_results):
+def save_plots(ml_results, dl_results, train_size, test_size):
     ml_df = pd.DataFrame(ml_results)
     dl_df = pd.DataFrame(dl_results)
+    
+    # Define the directory for today's plots
+    plot_dir = f'plots/{today_date}'
     
     # 1. ML Models Comparison
     plt.figure(figsize=(10, 6))
@@ -144,7 +156,7 @@ def save_plots(ml_results, dl_results):
     plt.title('Accuracy Distribution by ML Model')
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig('plots/ml_models_comparison.png')
+    plt.savefig(f'{plot_dir}/ml_models_comparison_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 2. ML Features Impact
@@ -159,7 +171,7 @@ def save_plots(ml_results, dl_results):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('plots/ml_features_impact.png')
+    plt.savefig(f'{plot_dir}/ml_features_impact_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 3. DL Parameters Impact
@@ -172,7 +184,7 @@ def save_plots(ml_results, dl_results):
     sns.heatmap(pivot_table, annot=True, fmt='.3f', cmap='YlOrRd')
     plt.title('DL Accuracy by Batch Size and Max Length')
     plt.tight_layout()
-    plt.savefig('plots/dl_parameters_impact.png')
+    plt.savefig(f'{plot_dir}/dl_parameters_impact_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 4. Training Time Comparison
@@ -186,7 +198,7 @@ def save_plots(ml_results, dl_results):
     plt.ylabel('Time (seconds)')
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/training_time_comparison.png')
+    plt.savefig(f'{plot_dir}/training_time_comparison_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 5. ML Models Time vs Accuracy
@@ -197,7 +209,7 @@ def save_plots(ml_results, dl_results):
     plt.ylabel('Accuracy')
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('plots/ml_time_vs_accuracy.png')
+    plt.savefig(f'{plot_dir}/ml_time_vs_accuracy_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 6. DL Learning Rate Impact
@@ -206,7 +218,6 @@ def save_plots(ml_results, dl_results):
         for max_length in dl_df['max_length'].unique():
             subset = dl_df[(dl_df['batch_size'] == batch_size) & (dl_df['max_length'] == max_length)]
             plt.plot(subset['learning_rate'], subset['accuracy'], marker='o', label=f'Batch {batch_size}, Length {max_length}')
-    
     plt.title('Impact of Learning Rate on DL Model Accuracy')
     plt.xlabel('Learning Rate')
     plt.ylabel('Accuracy')
@@ -214,7 +225,7 @@ def save_plots(ml_results, dl_results):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('plots/dl_learning_rate_impact.png')
+    plt.savefig(f'{plot_dir}/dl_learning_rate_impact_train{train_size}_test{test_size}.png')
     plt.close()
     
     # Save results summary
@@ -254,13 +265,13 @@ def load_and_show_results():
         print(dl_df.groupby(['batch_size', 'max_length'])['accuracy'].mean().unstack())
         
         # Generate plots
-        save_plots(ml_results, dl_results)
+        save_plots(ml_results, dl_results, 5000, 1000)
         print("\nPlots have been updated in the 'plots' directory")
         
     except FileNotFoundError:
         print("No results found. Please run training first.")
 
-def create_comparative_plots(ml_results, dl_results):
+def create_comparative_plots(ml_results, dl_results, train_size, test_size):
     ml_df = pd.DataFrame(ml_results)
     dl_df = pd.DataFrame(dl_results)
     
@@ -288,7 +299,7 @@ def create_comparative_plots(ml_results, dl_results):
     plt.legend()
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/comparison/accuracy_comparison.png')
+    plt.savefig(f'plots/comparison/accuracy_comparison_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 2. Training Time vs Accuracy Scatter Plot
@@ -310,7 +321,7 @@ def create_comparative_plots(ml_results, dl_results):
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig('plots/comparison/time_vs_accuracy.png')
+    plt.savefig(f'plots/comparison/time_vs_accuracy_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 3. Box Plot Comparison
@@ -333,7 +344,7 @@ def create_comparative_plots(ml_results, dl_results):
     plt.title('Accuracy Distribution: ML vs DL Models')
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/comparison/accuracy_distribution.png')
+    plt.savefig(f'plots/comparison/accuracy_distribution_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # Save comparative summary
@@ -390,7 +401,7 @@ def extract_metrics_from_report(report):
     
     return metrics
 
-def create_metric_comparison_plots(ml_results, dl_results):
+def create_metric_comparison_plots(ml_results, dl_results, train_size, test_size):
     # Create directory for metric comparisons
     os.makedirs('plots/metrics', exist_ok=True)
     
@@ -444,7 +455,7 @@ def create_metric_comparison_plots(ml_results, dl_results):
     plt.xticks(x, metrics_data['model_names'], rotation=45)
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/metrics/accuracy_comparison.png')
+    plt.savefig(f'plots/metrics/accuracy_comparison_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 2. Recall Comparison
@@ -463,7 +474,7 @@ def create_metric_comparison_plots(ml_results, dl_results):
     plt.legend()
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/metrics/recall_comparison.png')
+    plt.savefig(f'plots/metrics/recall_comparison_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 3. F1-Score Comparison
@@ -481,7 +492,7 @@ def create_metric_comparison_plots(ml_results, dl_results):
     plt.legend()
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/metrics/f1_comparison.png')
+    plt.savefig(f'plots/metrics/f1_comparison_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 4. Recall Index Plot
@@ -495,7 +506,7 @@ def create_metric_comparison_plots(ml_results, dl_results):
     plt.xticks(x, metrics_data['model_names'], rotation=45)
     plt.grid(True, axis='y')
     plt.tight_layout()
-    plt.savefig('plots/metrics/recall_index.png')
+    plt.savefig(f'plots/metrics/recall_index_{today_date}_train{train_size}_test{test_size}.png')
     plt.close()
     
     # 5. Metrics Summary Table
@@ -535,6 +546,8 @@ def main():
                         help='Size of the training dataset')
     parser.add_argument('--test-size', type=int, default=1000, 
                         help='Size of the testing dataset')
+    parser.add_argument('--save-checkpoints', action='store_true', 
+                        help='Save model checkpoints during training')
     args = parser.parse_args()
     
     setup_directories()
@@ -546,12 +559,12 @@ def main():
         ml_results = experiment_ml_parameters(train_size=args.train_size, test_size=args.test_size)
         
         print("\nRunning DL experiments...")
-        dl_results = experiment_dl_parameters(train_size=args.train_size, test_size=args.test_size)
+        dl_results = experiment_dl_parameters(train_size=args.train_size, test_size=args.test_size, save_checkpoints=args.save_checkpoints)
         
         print("\nGenerating and saving plots...")
-        save_plots(ml_results, dl_results)
-        create_comparative_plots(ml_results, dl_results)
-        create_metric_comparison_plots(ml_results, dl_results)
+        save_plots(ml_results, dl_results, args.train_size, args.test_size)
+        create_comparative_plots(ml_results, dl_results, args.train_size, args.test_size)
+        create_metric_comparison_plots(ml_results, dl_results, args.train_size, args.test_size)
         print("Results saved in 'plots' directory")
 
 if __name__ == "__main__":

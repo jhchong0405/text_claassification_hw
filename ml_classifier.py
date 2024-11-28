@@ -24,7 +24,7 @@ class TraditionalMLClassifier:
         }
         self.results = {}  # Store results for analysis
         
-    def train_and_evaluate(self, x_train_text, x_test_text, y_train, y_test, log_file=None):
+    def train_and_evaluate(self, x_train_text, x_test_text, y_train, y_test, log_file=None, train_size=5000, test_size=1000):
         def log(message):
             print(message)
             if log_file:
@@ -35,9 +35,6 @@ class TraditionalMLClassifier:
         start_time = time.time()
         
         # Use a subset of data for quick testing
-        train_size = 5000
-        test_size = 1000
-        
         x_train_subset = x_train_text[:train_size]
         y_train_subset = y_train[:train_size]
         x_test_subset = x_test_text[:test_size]

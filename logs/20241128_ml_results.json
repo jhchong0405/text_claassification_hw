@@ -1,0 +1,388 @@
+{
+    "ml_results": [
+        {
+            "max_features": 500,
+            "min_df": 3,
+            "model_name": "Random Forest",
+            "accuracy": 0.7894,
+            "time": 4.44122314453125,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.83      0.73      0.78      5027\n           1       0.76      0.85      0.80      4973\n\n    accuracy                           0.79     10000\n   macro avg       0.79      0.79      0.79     10000\nweighted avg       0.79      0.79      0.79     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 3,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8422,
+            "time": 0.44159483909606934,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.83      0.84      5027\n           1       0.83      0.85      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 3,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8413,
+            "time": 0.33486270904541016,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.83      0.84      5027\n           1       0.83      0.85      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 3,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8153,
+            "time": 0.015587329864501953,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.82      0.80      0.81      5027\n           1       0.81      0.83      0.82      4973\n\n    accuracy                           0.82     10000\n   macro avg       0.82      0.82      0.82     10000\nweighted avg       0.82      0.82      0.82     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 5,
+            "model_name": "Random Forest",
+            "accuracy": 0.7888,
+            "time": 4.501756906509399,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.72      0.77      5027\n           1       0.75      0.86      0.80      4973\n\n    accuracy                           0.79     10000\n   macro avg       0.79      0.79      0.79     10000\nweighted avg       0.80      0.79      0.79     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 5,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8422,
+            "time": 0.37377238273620605,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.83      0.84      5027\n           1       0.83      0.85      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 5,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8413,
+            "time": 0.31795787811279297,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.83      0.84      5027\n           1       0.83      0.85      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 5,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8153,
+            "time": 0.015514135360717773,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.82      0.80      0.81      5027\n           1       0.81      0.83      0.82      4973\n\n    accuracy                           0.82     10000\n   macro avg       0.82      0.82      0.82     10000\nweighted avg       0.82      0.82      0.82     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 10,
+            "model_name": "Random Forest",
+            "accuracy": 0.7904,
+            "time": 4.53705906867981,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.83      0.73      0.78      5027\n           1       0.76      0.85      0.80      4973\n\n    accuracy                           0.79     10000\n   macro avg       0.79      0.79      0.79     10000\nweighted avg       0.79      0.79      0.79     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 10,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8422,
+            "time": 0.39556884765625,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.83      0.84      5027\n           1       0.83      0.85      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 10,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8416,
+            "time": 0.33488965034484863,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.83      0.84      5027\n           1       0.83      0.85      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 500,
+            "min_df": 10,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8156,
+            "time": 0.01557159423828125,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.82      0.81      0.81      5027\n           1       0.81      0.83      0.82      4973\n\n    accuracy                           0.82     10000\n   macro avg       0.82      0.82      0.82     10000\nweighted avg       0.82      0.82      0.82     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 3,
+            "model_name": "Random Forest",
+            "accuracy": 0.7991,
+            "time": 3.7649543285369873,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.74      0.79      5027\n           1       0.76      0.86      0.81      4973\n\n    accuracy                           0.80     10000\n   macro avg       0.80      0.80      0.80     10000\nweighted avg       0.80      0.80      0.80     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 3,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8643,
+            "time": 0.7083649635314941,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.85      0.86      5027\n           1       0.86      0.87      0.87      4973\n\n    accuracy                           0.86     10000\n   macro avg       0.86      0.86      0.86     10000\nweighted avg       0.86      0.86      0.86     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 3,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8608,
+            "time": 0.34021544456481934,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.85      0.86      5027\n           1       0.85      0.87      0.86      4973\n\n    accuracy                           0.86     10000\n   macro avg       0.86      0.86      0.86     10000\nweighted avg       0.86      0.86      0.86     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 3,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8363,
+            "time": 0.019133567810058594,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.83      0.84      5027\n           1       0.83      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 5,
+            "model_name": "Random Forest",
+            "accuracy": 0.8048,
+            "time": 3.7016241550445557,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.75      0.79      5027\n           1       0.77      0.86      0.81      4973\n\n    accuracy                           0.80     10000\n   macro avg       0.81      0.81      0.80     10000\nweighted avg       0.81      0.80      0.80     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 5,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8643,
+            "time": 0.7053878307342529,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.85      0.86      5027\n           1       0.86      0.87      0.87      4973\n\n    accuracy                           0.86     10000\n   macro avg       0.86      0.86      0.86     10000\nweighted avg       0.86      0.86      0.86     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 5,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8608,
+            "time": 0.3389885425567627,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.85      0.86      5027\n           1       0.85      0.87      0.86      4973\n\n    accuracy                           0.86     10000\n   macro avg       0.86      0.86      0.86     10000\nweighted avg       0.86      0.86      0.86     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 5,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8363,
+            "time": 0.01774454116821289,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.83      0.84      5027\n           1       0.83      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 10,
+            "model_name": "Random Forest",
+            "accuracy": 0.7991,
+            "time": 3.637782096862793,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.74      0.79      5027\n           1       0.76      0.86      0.81      4973\n\n    accuracy                           0.80     10000\n   macro avg       0.80      0.80      0.80     10000\nweighted avg       0.80      0.80      0.80     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 10,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8643,
+            "time": 0.710181713104248,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.85      0.86      5027\n           1       0.86      0.87      0.87      4973\n\n    accuracy                           0.86     10000\n   macro avg       0.86      0.86      0.86     10000\nweighted avg       0.86      0.86      0.86     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 10,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8608,
+            "time": 0.33373475074768066,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.85      0.86      5027\n           1       0.85      0.87      0.86      4973\n\n    accuracy                           0.86     10000\n   macro avg       0.86      0.86      0.86     10000\nweighted avg       0.86      0.86      0.86     10000\n"
+        },
+        {
+            "max_features": 1000,
+            "min_df": 10,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8363,
+            "time": 0.017815113067626953,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.83      0.84      5027\n           1       0.83      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 3,
+            "model_name": "Random Forest",
+            "accuracy": 0.8054,
+            "time": 3.0756070613861084,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.75      0.79      5027\n           1       0.77      0.87      0.82      4973\n\n    accuracy                           0.81     10000\n   macro avg       0.81      0.81      0.80     10000\nweighted avg       0.81      0.81      0.80     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 3,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8776,
+            "time": 1.053011178970337,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.87      0.88      5027\n           1       0.87      0.89      0.88      4973\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 3,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8694,
+            "time": 0.3429734706878662,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.88      0.86      0.87      5027\n           1       0.86      0.88      0.87      4973\n\n    accuracy                           0.87     10000\n   macro avg       0.87      0.87      0.87     10000\nweighted avg       0.87      0.87      0.87     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 3,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8427,
+            "time": 0.019910097122192383,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.84      0.84      5027\n           1       0.84      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 5,
+            "model_name": "Random Forest",
+            "accuracy": 0.8105,
+            "time": 3.1644203662872314,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.76      0.80      5027\n           1       0.78      0.86      0.82      4973\n\n    accuracy                           0.81     10000\n   macro avg       0.81      0.81      0.81     10000\nweighted avg       0.81      0.81      0.81     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 5,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8776,
+            "time": 1.05116605758667,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.87      0.88      5027\n           1       0.87      0.89      0.88      4973\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 5,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8694,
+            "time": 0.33852458000183105,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.88      0.86      0.87      5027\n           1       0.86      0.88      0.87      4973\n\n    accuracy                           0.87     10000\n   macro avg       0.87      0.87      0.87     10000\nweighted avg       0.87      0.87      0.87     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 5,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8427,
+            "time": 0.020610332489013672,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.84      0.84      5027\n           1       0.84      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 10,
+            "model_name": "Random Forest",
+            "accuracy": 0.8094,
+            "time": 3.0207977294921875,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.76      0.80      5027\n           1       0.78      0.86      0.82      4973\n\n    accuracy                           0.81     10000\n   macro avg       0.81      0.81      0.81     10000\nweighted avg       0.81      0.81      0.81     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 10,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8779,
+            "time": 0.9919109344482422,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.87      0.88      5027\n           1       0.87      0.89      0.88      4973\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 10,
+            "model_name": "Linear SVM",
+            "accuracy": 0.869,
+            "time": 0.3414340019226074,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.88      0.86      0.87      5027\n           1       0.86      0.88      0.87      4973\n\n    accuracy                           0.87     10000\n   macro avg       0.87      0.87      0.87     10000\nweighted avg       0.87      0.87      0.87     10000\n"
+        },
+        {
+            "max_features": 2000,
+            "min_df": 10,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8423,
+            "time": 0.02011895179748535,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.85      0.84      0.84      5027\n           1       0.84      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 3,
+            "model_name": "Random Forest",
+            "accuracy": 0.8053,
+            "time": 2.8387451171875,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.76      0.80      5027\n           1       0.78      0.85      0.81      4973\n\n    accuracy                           0.81     10000\n   macro avg       0.81      0.81      0.80     10000\nweighted avg       0.81      0.81      0.80     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 3,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8795,
+            "time": 0.6667943000793457,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.87      0.88      5027\n           1       0.87      0.89      0.88      4973\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 3,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8676,
+            "time": 0.3436613082885742,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.86      0.87      5027\n           1       0.86      0.87      0.87      4973\n\n    accuracy                           0.87     10000\n   macro avg       0.87      0.87      0.87     10000\nweighted avg       0.87      0.87      0.87     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 3,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8442,
+            "time": 0.021153926849365234,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.85      0.85      5027\n           1       0.85      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 5,
+            "model_name": "Random Forest",
+            "accuracy": 0.8093,
+            "time": 2.8336057662963867,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.77      0.80      5027\n           1       0.78      0.85      0.82      4973\n\n    accuracy                           0.81     10000\n   macro avg       0.81      0.81      0.81     10000\nweighted avg       0.81      0.81      0.81     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 5,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8795,
+            "time": 0.6699223518371582,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.87      0.88      5027\n           1       0.87      0.89      0.88      4973\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 5,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8676,
+            "time": 0.355349063873291,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.86      0.87      5027\n           1       0.86      0.87      0.87      4973\n\n    accuracy                           0.87     10000\n   macro avg       0.87      0.87      0.87     10000\nweighted avg       0.87      0.87      0.87     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 5,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8442,
+            "time": 0.02114582061767578,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.85      0.85      5027\n           1       0.85      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 10,
+            "model_name": "Random Forest",
+            "accuracy": 0.8099,
+            "time": 2.772191047668457,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.76      0.80      5027\n           1       0.78      0.86      0.82      4973\n\n    accuracy                           0.81     10000\n   macro avg       0.81      0.81      0.81     10000\nweighted avg       0.81      0.81      0.81     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 10,
+            "model_name": "Logistic Regression",
+            "accuracy": 0.8793,
+            "time": 0.7523765563964844,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.89      0.87      0.88      5027\n           1       0.87      0.89      0.88      4973\n\n    accuracy                           0.88     10000\n   macro avg       0.88      0.88      0.88     10000\nweighted avg       0.88      0.88      0.88     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 10,
+            "model_name": "Linear SVM",
+            "accuracy": 0.8679,
+            "time": 0.3263063430786133,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.87      0.86      0.87      5027\n           1       0.86      0.88      0.87      4973\n\n    accuracy                           0.87     10000\n   macro avg       0.87      0.87      0.87     10000\nweighted avg       0.87      0.87      0.87     10000\n"
+        },
+        {
+            "max_features": 3000,
+            "min_df": 10,
+            "model_name": "Naive Bayes",
+            "accuracy": 0.8438,
+            "time": 0.020923137664794922,
+            "classification_report": "              precision    recall  f1-score   support\n\n           0       0.84      0.85      0.85      5027\n           1       0.85      0.84      0.84      4973\n\n    accuracy                           0.84     10000\n   macro avg       0.84      0.84      0.84     10000\nweighted avg       0.84      0.84      0.84     10000\n"
+        }
+    ]
+}

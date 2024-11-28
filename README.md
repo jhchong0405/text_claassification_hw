@@ -1,6 +1,3 @@
-This is my school project for the course "Text Mining" at the Peking University.
-
-```markdown
 # IMDB Sentiment Analysis
 
 This project performs sentiment analysis on the IMDB dataset using both traditional machine learning and deep learning approaches. The results are logged and visualized to compare the performance of different models and configurations.
@@ -12,6 +9,7 @@ This project performs sentiment analysis on the IMDB dataset using both traditio
 - `dl_classifier.py`: Contains the `DeepLearningClassifier` class for deep learning models using transformers.
 - `plots/`: Directory where generated plots are saved.
 - `logs/`: Directory where logs and results are saved.
+- `test.sh`: Shell script to automate running experiments with different dataset sizes.
 
 ## Setup
 
@@ -69,6 +67,7 @@ python analysis.py
 - `--show-only`: Only display results without running new experiments.
 - `--train-size`: Specify the size of the training dataset (default: 5000).
 - `--test-size`: Specify the size of the testing dataset (default: 1000).
+- `--save-checkpoints`: Save model checkpoints during training.
 
 Example:
 
@@ -76,10 +75,22 @@ Example:
 python analysis.py --train-size 10000 --test-size 2000
 ```
 
+### Running Experiments with `test.sh`
+
+You can automate running experiments with different dataset sizes using the `test.sh` script:
+
+```bash
+chmod +x test.sh
+./test.sh
+```
+
+This script will run experiments for predefined train and test sizes.
+
 ## Results
 
 - Results are logged in the `logs/` directory.
-- Plots are saved in the `plots/` directory, including comparisons of model performance and parameter impacts.
+- Plots are saved in the `plots/` directory, including comparisons of model performance, parameter impacts, and detailed metrics.
+- A summary of the best models and their metrics is saved in `plots/results_summary.txt`.
 
 ## Troubleshooting
 
@@ -93,9 +104,4 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-```
-
-### Notes:
-- Replace `<repository-url>` and `<repository-directory>` with the actual URL and directory name of your repository.
-- Ensure that you have a `requirements.txt` file listing all the necessary Python packages.
-- Adjust the instructions based on your specific setup and any additional details relevant to your project.
+</rewritten_file>

@@ -1,11 +1,11 @@
 Best Results Summary:
 --------------------------------------------------
 Best ML Model: Logistic Regression
-Parameters: max_features=2000, min_df=3
-Accuracy: 0.8610
-Training Time: 0.06s
+Parameters: max_features=3000, min_df=3
+Accuracy: 0.8795
+Training Time: 0.67s
 
 Best DL Model:
-Parameters: batch_size=32, max_length=256
-Accuracy: 0.9220
-Training Time: 55.53s
+Parameters: batch_size=64, max_length=256
+Accuracy: 0.9376
+Training Time: 288.25s
